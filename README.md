@@ -40,11 +40,18 @@ package main
 import (
     "fmt"
     "os"
-    "github.com/daeMOn63/bitclient"
+    "github.com/lotos2512/bitclient"
 )
 
 func main() {
-    client := bitclient.NewBitClient("https://bitbucket.org/", "<username>", "<password>")
+	
+	cfg := bitclient.BitConf{
+		Url: "https://bitbucket.org/",
+		UserName: "",
+		Password: "",
+    }
+	
+    client := bitclient.NewBitClient(cfg)
 
     requestParams := bitclient.PagedRequest{
         Limit: 10,
