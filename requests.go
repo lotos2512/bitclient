@@ -58,6 +58,11 @@ func (bc *BitClient) DoGet(uri string, params interface{}, rData interface{}) (*
 	return bc.checkReponse(resp, rError)
 }
 
+func (bc *BitClient) Request(uri string, params interface{}) (*http.Response, error) {
+	request, _ := bc.sling.New().Get(BASE_URI + uri).QueryStruct(params).Request()
+	return bc.client.Do(request)
+}
+
 func (bc *BitClient) DoPostUrl(uri string, params interface{}, rData interface{}) (*http.Response, error) {
 
 	rError := new(ErrorResponse)
